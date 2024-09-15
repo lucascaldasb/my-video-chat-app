@@ -25,7 +25,7 @@ import {
   Row
 } from './styles'
 
-const socket = io.connect('http://localhost:5000')
+const socket = io.connect('https://video-app-back-ciebj6qid-valdersonjrs-projects.vercel.app')
 
 function App() {
   const [peerId, setPeerId] = useState(null)
