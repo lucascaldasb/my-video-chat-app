@@ -8,9 +8,59 @@ export const MainContainer = styled.div`
   color: white;
 `;
 
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+export const CallInputContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #202124;
+  width: 50%;
+  height: 100vh;
+
+  h3 {
+    color: white;
+  }
+`;
+
+export const CallLabel = styled.label`
+  color: white;
+  margin-right: 10px;
+`;
+
+export const CallInput = styled.input`
+  background-color: #303134;
+  color: white;
+  height: 30px;
+  width: 500px;
+  border: none;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-right: 10px;
+`;
+
+export const CallButton = styled.button`
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+`;
+
 export const VideoGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: flex;
+  flex-direction: row;
   gap: 10px;
   width: 100%;
   padding: 20px;
@@ -21,7 +71,10 @@ export const VideoCard = styled.div`
   background-color: #303134;
   border-radius: 10px;
   padding: 10px;
+  width: 50%;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -29,12 +82,30 @@ export const VideoCard = styled.div`
     width: 100%;
     height: auto;
     border-radius: 10px;
+    background-color: #000;
   }
 `;
 
+export const IconContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+`
+
+export const IconBackground = styled.button`
+  display: flex;
+  width: 50px;
+  height: 50px;
+  background-color: #1a73e8;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  border-style: none;
+`
+
 export const ChatSidebar = styled.div`
   background-color: #3c4043;
-  width: ${(props) => (props.isOpen ? '300px' : '0')};
+  width: ${(props) => (props.isOpen ? '400px' : '0')};
   overflow: hidden;
   transition: width 0.3s ease-in-out;
   height: 100%;
@@ -44,7 +115,7 @@ export const ChatSidebar = styled.div`
 export const ChatButton = styled.button`
   position: absolute;
   top: 20px;
-  right: ${(props) => (props.isOpen ? '310px' : '10px')};
+  right: ${(props) => (props.isOpen ? '350px' : '10px')};
   background-color: #1a73e8;
   border: none;
   color: white;
