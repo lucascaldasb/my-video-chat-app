@@ -19,12 +19,14 @@ io.on('connection', (socket) => {
 
   socket.on('send-message', (message) => {
     const targetSocketId = users[message.to]; // Obtém o socketId do destinatário
-    
+  
     if (targetSocketId) {
-      // Envia a mensagem ao destinatário
       io.to(targetSocketId).emit('receive-message', message);
+      console.log(`Message sent from ${message.userId} to ${message.to}`);
+    } else {
+      console.log(`No user found with peerId: ${message.to}`);
     }
-  });
+  });  
 
   socket.on('disconnect', () => {
     // Remova o peerId do mapa ao desconectar

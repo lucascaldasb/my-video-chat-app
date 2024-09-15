@@ -25,12 +25,12 @@ import {
   Row
 } from './styles'
 
-const socket = io.connect('https://video-app-back-ciebj6qid-valdersonjrs-projects.vercel.app')
+const socket = io.connect('http://localhost:5000')
 
 function App() {
   const [peerId, setPeerId] = useState(null)
+  const [remotePeerId, setRemotePeerId] = useState(null)
   const [remoteCallIdValue, setRemoteCallIdValue] = useState(null)
-  const [me] = useState(`User-${Math.random()}`)
   const [cameraOn, setCameraOn] = useState(true)
   const [micOn, setMicOn] = useState(true)
   const [isChatOpen, setIsChatOpen] = useState(false)
@@ -68,6 +68,7 @@ function App() {
   }, []);
   
   const call = (remotePeerId) => {
+    setRemotePeerId(remotePeerId)
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then((mediaStream) => {
       currentUserVideoRef.current.srcObject = mediaStream;
       currentUserVideoRef.current.play();
@@ -85,7 +86,7 @@ function App() {
   
 
   const sendMessage = () => {
-    const message = { userId: me, text: chatMessage, to: remoteCallIdValue };
+    const message = { userId: peerId, text: chatMessage, to: remoteCallIdValue };
     socket.emit('send-message', message);
     setMessages((prevMessages) => [...prevMessages, message]);
     setChatMessage('');
@@ -93,7 +94,7 @@ function App() {
   
   useEffect(() => {
     socket.on('receive-message', (message) => {
-      if (message.to === peerId || message.userId === me) {
+      if (message.to === peerId || message.userId === peerId) {
         // Exibe a mensagem apenas se for destinada ao usuário atual
         setMessages((prevMessages) => [...prevMessages, message]);
       }
@@ -162,7 +163,7 @@ function App() {
         )}
         {remoteVideoRef && (
           <VideoCard>
-            <h3>Usuário</h3>
+            <h3>Usuário {remotePeerId}</h3>
             <video ref={remoteVideoRef} />
           </VideoCard>
         )}
