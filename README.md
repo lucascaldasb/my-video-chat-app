@@ -1,6 +1,7 @@
 # My Video Chat App
 
 Este guia pressupõe que você já possui um ambiente de desenvolvimento básico configurado, com **Node.js** e **npm** (ou **yarn**) instalados.
+Este projeto esta utilizando o Vercel como ferramenta de deploy
 
 ## Integrantes
 
@@ -105,5 +106,3 @@ Para estabelecer a conexão, um dos usuários deve pegar o ID do outro e inseri-
 
 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
